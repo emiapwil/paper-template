@@ -1,0 +1,42 @@
+\documentclass{article}
+
+\usepackage{awu}
+
+\begin{document}
+
+\title{Test Paper}
+\maketitle
+
+\ie, \eg
+
+\paragraph{data}
+
+\citeauthor{bosshart_p4_2014}
+
+\begin{figure}
+  \begin{subfigure}{0.3\linewidth}
+    \caption{Hello}
+    \label{fig:t1}
+  \end{subfigure}
+  \begin{subfigure}{0.3\linewidth}
+    \caption{World}
+    \label{fig:t2}
+  \end{subfigure}
+\end{figure}
+
+\cref{fig:t2}
+
+\input{algorithms/example}
+
+\cref{alg:example}
+
+\begin{theorem}
+  \label{theorem:abc}
+\end{theorem}
+
+\Cref{theorem:abc}
+
+\bibliographystyle{unsrtnat}
+\bibliography{references.bib}
+
+\end{document}

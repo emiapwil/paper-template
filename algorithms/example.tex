@@ -1,0 +1,57 @@
+\begin{algorithm}[t]
+  \caption{An Example Algorithm}
+  \label{alg:example}
+
+  \small
+  \DontPrintSemicolon
+
+  \KwIn{$V(A, P, Q)$}
+  \KwOut{$V'(A', P', Q')$}
+
+  \Func{\Call{EquivAggregation}{V}}{
+    $\mathcal{V} \gets \left\{
+      V_j \mid
+      V_j \gets \left( A^j, P_j, Q_j \right),
+      1 \leq j \leq M
+    \right\}$\;
+
+    $\mathcal{G} \gets \Call{GroupBy}{
+      \mathcal{V},
+      V_j \Rightarrow \left( v_j \gets A^j, V_i \right)
+    }$\;
+
+    \For{$G_j \in \mathcal{G}$}{
+      $V'_j \gets \Call{Aggregate}{v_j, \{V_{m_{j,1}}, \dots, V_{m_{j,|G_j|}}\}}$\;
+    }
+
+    $M' \gets |\mathcal G|$\;
+    $V' \gets
+      \left(
+        \begin{bmatrix}
+          A'^1 & \cdots & A'^{M'}
+        \end{bmatrix},
+        \begin{bmatrix}
+          P'_1 \\ \vdots \\ P'_{M'}
+        \end{bmatrix},
+        \begin{bmatrix}
+          Q'_1 \\ \vdots \\ Q'_{M'}
+        \end{bmatrix}
+      \right)$\;
+    \Return{$V'$}
+  }
+  \Func{\Call{Aggregate}{$v_j, \{V_{m_{j,1}}, \dots, V_{m_{j,|G_j|}}\}$}}{
+    $A'^j = v_j$\;
+    $\displaystyle P'_j \gets \left[
+      \bigoplus\limits_i p_{m_{j,i},1}, \dots, \bigoplus\limits_i p_{m_{j,i}, K_i}
+    \right]$\;
+    $\displaystyle Q'_j \gets \left[
+      \min_i q_{m_{j,i},1}, \dots, \min_i q_{m_{j,i}, K_c}
+    \right]$\;
+
+    \Return{
+      $\left(
+        A'^j, P'_j, Q'_j
+      \right)$
+    }
+  }
+\end{algorithm}
