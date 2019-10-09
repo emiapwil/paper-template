@@ -65,6 +65,19 @@
 \crefformat{table}{\tablename~#2#1#3}
 \crefformat{figure}{\figurename~#2#1#3}
 \crefformat{algorithm}{\algorithmname~#2#1#3}
+
+\newcommand{\newshortref}[2]{
+  \expandafter\newcommand\csname #1ref\endcsname[1]{\Cref{#2:##1}}
+}
+\newshortref{Sec}{sec}
+\newshortref{Fig}{fig}
+\newshortref{Tab}{tab}
+\newshortref{Alg}{alg}
+\newshortref{Lst}{lst}
+\newshortref{Def}{def}
+\newshortref{Thm}{thm}
+\newshortref{Lem}{lem}
+\newshortref{Prop}{prop}
 \fi
 
 \ifawu@natbib
