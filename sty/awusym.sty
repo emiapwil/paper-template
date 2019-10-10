@@ -6,27 +6,28 @@
 \RequirePackage{xparse}
 
 \newcommand{\circradius}{1.0ex}
+\newcommand\circscale{0.8}
 
-\NewDocumentCommand{\bigcircle}{ O{white} m }{%
-  \begin{tikzpicture}
+\NewDocumentCommand{\bigcircle}{ O{#2} m }{%
+  \begin{tikzpicture}[scale=\circscale]
     \draw[#1, fill=#2] (0,0) circle (\circradius); % Fill circle with base colour (arg#2)
   \end{tikzpicture}
 }
 
 \NewDocumentCommand{\eclipse}{ O{#3} O{white} m }{%
-  \begin{tikzpicture}
+  \begin{tikzpicture}[scale=\circscale]
     \draw[#1, fill=#2] (0,0) circle (\circradius);
     % Fill circle with base colour (arg#2)
-    \fill[#3] (0,0) -- (90:\circradius) arc (90:270:\circradius) -- cycle;
+    \draw[#3, fill=#3] (0,0) -- (90:\circradius) arc (90:270:\circradius) -- cycle;
     % Fill a half circle filled with second colour (arg#3)
   \end{tikzpicture}
 }
 
 \NewDocumentCommand{\heclipse}{ O{#3} O{white} m }{%
-  \begin{tikzpicture}
+  \begin{tikzpicture}[scale=\circscale]
     \draw[#1, fill=#2] (0,0) circle (\circradius);
     % Fill circle with base colour (arg#2)
-    \fill[#3] (0,0) -- (0:\circradius) arc (0:180:\circradius) -- cycle;
+    \draw[#3, fill=#3] (0,0) -- (0:\circradius) arc (0:180:\circradius) -- cycle;
     % Fill a half circle filled with second colour (arg#3)
   \end{tikzpicture}
 }
