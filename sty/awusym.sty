@@ -5,26 +5,28 @@
 
 \RequirePackage{xparse}
 
+\newcommand{\circradius}{1.0ex}
+
 \NewDocumentCommand{\bigcircle}{ O{white} m }{%
   \begin{tikzpicture}
-    \draw[#1, fill=#2] (0,0) circle (1.0ex); % Fill circle with base colour (arg#2)
+    \draw[#1, fill=#2] (0,0) circle (\circradius); % Fill circle with base colour (arg#2)
   \end{tikzpicture}
 }
 
 \NewDocumentCommand{\eclipse}{ O{#3} O{white} m }{%
   \begin{tikzpicture}
-    \draw[#1, fill=#2] (0,0) circle (1.0ex);
+    \draw[#1, fill=#2] (0,0) circle (\circradius);
     % Fill circle with base colour (arg#2)
-    \fill[#3] (0,0) -- (90:1ex) arc (90:270:1ex) -- cycle;
+    \fill[#3] (0,0) -- (90:\circradius) arc (90:270:\circradius) -- cycle;
     % Fill a half circle filled with second colour (arg#3)
   \end{tikzpicture}
 }
 
 \NewDocumentCommand{\heclipse}{ O{#3} O{white} m }{%
   \begin{tikzpicture}
-    \draw[#1, fill=#2] (0,0) circle (1.0ex);
+    \draw[#1, fill=#2] (0,0) circle (\circradius);
     % Fill circle with base colour (arg#2)
-    \fill[#3] (0,0) -- (0:1ex) arc (0:180:1ex) -- cycle;
+    \fill[#3] (0,0) -- (0:\circradius) arc (0:180:\circradius) -- cycle;
     % Fill a half circle filled with second colour (arg#3)
   \end{tikzpicture}
 }
